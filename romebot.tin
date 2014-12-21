@@ -1,0 +1,89 @@
+#var oldmobcount 0
+#var mobcount 0
+#var walked 1
+#var bottoggle "on"
+#var fighting false
+#map read rome
+#map goto 1
+#var mobcount 0;
+#read rome.tin;
+#format dir %s
+#format starttime %T
+#tick {mobcheck}
+{
+	#if {"$fighting" == "false"}
+	{
+		#if {"$mobcount" == "$oldmobcount"}
+		{
+			#var mobcount 0;
+		}
+		#var oldmobcount $mobcount;
+	}
+	{
+		#if {"$mobcount" == "0"} {#var fighting false;}
+	}
+}
+{5}
+#tick {timer}
+{
+
+	#if {$bottoggle == "on"}
+	{
+		#if {$walked <= 157}
+		{
+		#if {"$fighting" == "false"}
+		{
+		#if {"$mobcount" == "0"}
+		{
+			#math {walked} {$walked + 1};
+			#map run {$walked};
+		}
+		}
+		}
+		{
+		#showme Bot completed, returning home captain.;
+		#var bottoggle "off";
+		#map destroy;
+		recallgroup;
+		#delay 25 rome;
+		#delay 40 romeboton;
+		}
+	}
+}
+{3}
+#act {[DAM:%0}
+{
+#var fighting true
+}
+#act {death cry!}
+{
+	#var fighting false;
+	#math {mobcount} {$mobcount - 1};
+	look;
+}
+#alias {toggle}
+{
+	#if {"%1" == ""}
+	{
+		#showme Bot On or Off?
+	}
+	{
+	#if {"%1" == "on"}
+	{
+	#var bottoggle "on";
+	#var mobcount 0;
+	#read rome.tin;
+	look;
+	}
+	#if {"%1" == "off"}
+	{
+	#read unrome.tin;
+	#var bottoggle "off";
+	}
+	}
+}
+
+#alias {walkToRome}
+{
+	9ws5wnwnwswsw11ws;
+}

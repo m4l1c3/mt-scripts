@@ -1,0 +1,43 @@
+#var health 1;
+#var force 1;
+#alias spells {c 'clarity';c 'ultravision';c 'aura sight';c 'energy con';c 'sense dan';c 'psi se';c 'wall of iron will';c 'thought shield';c 'mindsight';c 'mental cleanse';c 'cell adj';}
+#action {%0(%1)hitp} {#if {$health == 1 && %0 < 2000 && $force == 0} {#var health 0;'cheal;pheal;mig;}}
+#action {You spend mental energies to increase your life force} {#var health 1;}
+#action {You feel a lot better!} {#var health 1;}
+#action {has been damaged} {eq}
+#action {You join the fight} {#2 migraine;}
+#action {<ear.....> a Beautiful Flower  [needs repair]} {rem flower}
+#action {<ear.....> Amulet of Love (invis)  [needs repair]} {rem amulet}
+#action {<about...> optical illusion  [needs repair]} {rem cape}
+#action {<neck....> ornament of magic  [needs repair]} {rem amulet}
+#action {<body....> alligator skin  [needs repair]} {rem skin}
+#action {<chest...> plate of magic  [needs repair]} {rem symb}
+#action {<wrist...> circle of light  [needs repair]} {rem bracelet}
+#action {<hands...> gauntlets of magic  [needs repair]} {rem gaunt}
+#action {<finger..> Brilliant Emerald Ring  [needs repair]} {rem emerald}
+#action {<shield..> euphoric vision  [needs repair]} {rem shield}
+#action {<legs....> ruby encrusted legplates  [needs repair]} {rem legg}
+#action {<ankle...> Anklet of Toshace  [needs repair]} {rem anklet}
+#action {<feet....> slippers of magic  [needs repair]} {rem shoes}
+
+#action {Silverthorn, The weaponsmith is here.} {k silver;}
+#action {Blackthorn, The Armour stands here.} {k black;}
+#action {Silverthorn is DEAD!  R.I.P.} {2w}
+#action {Blackthorn, The Armour is DEAD!  R.I.P.} {esw;repair}
+#action {A Blacksmith thanks you for your business.} {ene}
+
+#action {Your keen perception of danger leaves you...} {c 'se d';}
+#action {Your heightened sense of the hidden returns to normal...} {c 'ps s';}
+#action {You lose some sense of mental ability.} {#showme Something ticked out}
+#action {You lose focus of your own protection} {#showme Something ticked out}
+#action {Your mind loses its sharpness} {c 'clarity';}
+
+
+#action {You are getting hungry, better eat something soon!} {say feast;}
+
+#ticker {killarmor} {look} {300}
+
+#action {tells you: daemonsdown} {ddnw;climb down;nw;enter gate}
+#action {Your tummy rumbles and you begin to feel weak.} {say feast;}
+#alias {recallgroup} {#2 recite recall shelonna; #2 recite recall duder;#2 recite recall burn;#2 recite recall;#delay {20} {se;#all repair;wn;#all spells;'feast;wwn;buy 10 recall;see;#burn ord fol die;#burn summon;#burn adrencharms;}}
+#alias {romeboton} {#read romebot.tin}

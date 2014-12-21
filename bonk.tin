@@ -1,0 +1,17 @@
+#var health 1
+
+#action {%0(%1)hitp} {#if {$health == 1 && %0 < 500} {#var health 0;toggle off;#3 lco bandage;#3 bandage bonk;#delay {90} {toggle on;look;#var health 1}}}
+#action {You are already fighting} {#var fighting true;}
+#action {is DEAD} {#var fighting 0;look;checkSpells}
+#action {R.I.P} {$var fighting 0;look;checkSpells}
+#action {Backstab who} {#var fighting 0;look;}
+#action {You feel your blood start to rush through your veins.} {#var regen 1}
+#action {You feel more lethargic.} {#var haste 0;'haste;}
+#action {%0 gives you a barrel.} {drink bar;give bar bruce}
+#action {%0 gives you a waybread.} {eat way}
+#action {%0 stares at you and utters the words, 'pigho'.} {#var haste 1}
+
+#alias {checkSpells} {
+	#if {$haste == 0} 
+		{'haste;}
+}

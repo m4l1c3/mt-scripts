@@ -1,0 +1,38 @@
+#var fighting 0;
+#var bot 0;
+#var battleLength 0;
+#var health 1;
+
+#ticker {proceed} {#if {$bot == 1} {takeStep}} {5}
+#alias {takeStep} {#if {$fighting == 0 && $bot == 1} {#path walk forward} {#showme <001>  Still fighting or bot disabled!!  }}
+#alias {toggle} {#if {"%1" == "on"} {#var bot 1;look;} {#var bot 0;}}
+#action {The spirit of Nazareth lies, trapped for eternity.} {
+	#if {$looked == 1}
+			{
+				#var fighting 1;
+				k naz;
+				#6 paralyze;
+			}
+			{
+				#math looked {$looked + 1};
+				#if {$looked > 2}
+					{
+						#showme <001>     %1      ;
+						#var fighting 1;
+						k %1;
+					}
+					{
+						#showme Already fighting!;
+					}
+				look;
+			}
+}
+
+#var nazBot {northe;northe;southe;southe;southw;southw;northw;northw;}
+#action {END OF PATH} {#var bot 0;}
+#action {You creep} {#var traveled 1;#var looked 0;}
+#action {You walk in} {#var traveled 1;#var looked 0;}
+#action {You fly in} {#var traveled 1;#var looked 0;}
+#action {Darkness conceals the area} {#math looked {$looked + 1}}
+#action {[ Exits:} {#math looked {$looked + 1}}
+#action {Your blood freezes} {snag;#var fighting 0;}

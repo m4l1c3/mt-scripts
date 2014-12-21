@@ -1,0 +1,15 @@
+#var health 1;
+#action {You need to wield} {callsword}
+#action {Try standing first} {stand}
+#action {You are already fighting} {#var fighting true;}
+#action {%0(%1)hitp} {#if {$health == 1 && %0 < 3700} {#var health 0;'cheal;pummel;}}
+#action {%0 says, '%1 bandage'} {#show %1;#%1 lco bandage;#%1 bandage %0;}
+#action {%0 says, '%1 selfband'} {#%1 lco bandage;#%1 bandage boris;}
+#action {Your tummy rumbles and you begin to feel weak.} {say feast;}
+#action {You are disarmed} {stand;#3 callsword;}
+#alias {recallgroup} {lco invis;quaff invis;#2 recite scroll khal;#2 recite scroll krob;#2 recite scroll lort;#2 recite scroll vori;#2 recite scroll freb;#2 recite recall shelonna; #2 recite recall duder;#2 recite recall burn;#2 recite recall;#delay {20} {se;#all repair;wn;#all spells;'feast;wwn;buy 10 recall;see;#burn ord fol die;#burn summon;#burn adrencharms;}}
+#alias {romeboton} {#read romebot.tin}
+#action {You feel a lot better!} {#var health 1;}
+#action {has been damaged} {eq}
+#action {You join the fight} {#2 pummel;}
+#action {Pummel who?} {#var fighting false;#math {mobcount} {$mobcount - 1};look;}

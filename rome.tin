@@ -1,0 +1,32 @@
+#act {A man walks by, carrying stones for the road repair on his back.} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k slave;}}
+#act {A wild boar runs berserk across the field!} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k boar;}}
+#act {An ibex grazes quietly here.} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k ibex;}}
+#act {(good)A poorly dressed man carrying a walking staff rests briefly here.} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k pilgrim;}}
+#act {(good)A giant stag stands vigil over the fields.} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k stag;}}
+#act {A slave is here, looking around frantically in search of a hiding place.} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k slave;}}
+#act {A strange creature, half man, half goat, stands here, watching over the fields.} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k satyr;}}
+#act {(good)A man stands stares off into the distance, pondering existence.} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k philo;}}
+#act {A faun sits here on his hind legs, playing the flute.} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k faun;}}
+#act {(evil)A mangy dog sniffs the ground in search of food.} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k dog;}}
+#act {A Roman Engineer is here, repairing the invaluable road.} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k engin;}}
+#act {A stakeman is here ensuring the road is level and true.} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k stake;}}
+#act {(evil)A suspicious figure lurks in the shadows of the road.} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k robber;}}
+#act {A Roman Tribuni runs across the battlefield, relaying messages for his leader.} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k tribu;}}
+#act {A berserker screams insanely and charges into combat!} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k berserker;}}
+#act {A barbarian brute stands, waiting for the approach of the Romans.} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k brute;}}
+#act {An artillery soldier is here preparing to fire the catapult.} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k sold;}}
+#act {A foot soldier marches bravely into battle.} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k foot;}}
+#act {A barbarian holding a long pike stands at the ready here.} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k pike;}}
+#act {(good)A peasant is here, working the farm.} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k peas;}}
+#act {A large crow looks for something to eat.} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k crow;}}
+#act {A barbarian scout gathers intelligence while dodging the Roman patrols.} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k scout;}}
+#act {(evil)The overseer watches over the peasants with violence in his eyes.} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k over;}}
+#act {A Roman Sentry stands watch over the approach to the City of Rome.} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k sentry;}}
+#act {A giant minotaur paces back and forth, bellowing loudly.} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k mino;}}
+#act {(evil)A harpy cackles at you from the safety of a small tree.} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k harpy;}}
+#act {A tiger prowls silently along the edge of the road.} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k tiger;}}
+#act {A gryphon rests here on the edge of the path.} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k gryphon;}}
+#act {A barbarian chieftain rallies his hordes into a frenzy against the Romans.} {#math {mobcount} {$mobcount + 1}; #if {"$fighting" == "false"} {#var fighting true; k chief;}}
+
+#action {R.I.P} {#var fighting false; #math {mobcount} {$mobcount - 1};look;}
+#action {DEAD} {#var fighting false; #math {mobcount} {$mobcount - 1};look;}

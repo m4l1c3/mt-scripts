@@ -1,0 +1,42 @@
+#var heals 0;
+#var force 0;
+#var attempts 0;
+#var commandStack 0;
+
+#alias {gotoZeus} {
+	get all braz;nnnuneeueneu;un orn;op orn;u;#all spells;#brood lco yellow;#brood quaff yellow;vis;'resist;#delay {50} {killZeus;}
+}
+
+#action {ZEUS is DEAD} {restart;}
+
+#alias {rest} {
+	#var heals 0;#var force 0;#all stand;un orn;op orn;#all #20 flee;#4 pheal;#math commandStack {$commandStack + 4};u;#delay {20} {killZeus};
+}
+
+#alias {killZeus} {
+	#var force 1;#var heals 0;k z;un orn;op orn;pheal;#math commandStack {$commandStack + 1};
+}
+
+#alias {restart} {
+	getEmber;
+}
+
+#alias {getEmber} {
+	#var force 0;ddwswdwwsdsss;#delay {3600} {get all bra;gotoZeus;}
+}
+
+#action {Nah... You feel too relaxed to do that..Try standing first} {stand;pheal;#math commandStack {$commandStack + 1};}
+
+#action {You spend} {
+	#math commandStack {$commandStack - 1};
+	#if {$force > 0}
+	{
+		#show should heal;
+		#if {$heals < 5}
+		{#show healing;#math heals {$heals + 1};pheal;#math commandStack {$commandStack + 1};}
+		{#show not healing;rest;}
+	}
+	{
+		#show shouldnt heal;
+	}
+}

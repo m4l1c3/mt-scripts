@@ -1,0 +1,28 @@
+#var health 1;
+#var createdFood 0;
+#alias {toggle} {#show toggleing}
+
+#action {%0(%1)hitp} {#if {$health == 1 && %0 < 400} {#2 'heal;#var health 0;toggle off;#delay {45} {toggle on;look;#var health 1}}}
+#action {You are already fighting} {#var fighting 1;}
+#action {A warm feeling floods your body} {#var health 1;}
+#action {You join the fight} {#3 c 'danc sw';}
+#action {Your tummy rumbles and you begin to feel weak.} {c 'create w' barrel;drink bar;give bar bonk;#2 c 'create food';}
+#action {You create some food.} {#math createdFood {$createdFood + 1};#if {$createdFood < 2} {give way bonk} {eat way;#var createdFood 0;}}
+#action {%0 says, 'haste'} {c 'haste' %0;}
+#action {You feel.. FAST!} {#var haste 1}
+#action {You feel more lethargic.} {#var haste 0;c 'haste';}
+#action {Your sight has greatly improved} {#var true 1;}
+#action {vision fades} {#var true 0;c 'true s';}
+#action {You feel your blood start to rush through your veins.} {#var regen 1}
+
+
+#alias {spells} {c 'haste';c 'shield';c 'true s';c 'fly';c 'armor';}
+
+#alias {checkSpells} {
+	#if {$haste == 0} 
+		{c 'haste';}
+	#if {$regen == 0}
+		{c 'regen';}
+	#if {$true == 0}
+		{c 'true s';}
+}

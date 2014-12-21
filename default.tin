@@ -1,0 +1,24 @@
+#var health 1;
+
+#alias connect {#ses %1 timesmud.com 8500;y;n;%1;%2;1;1;#read %1.tin}
+#ticker {keepalive} {#cr} {300}
+#config {speedwalk} {on}
+#action {The Imperial Dockmaster takes tickets} {give ticket dock}
+#action {%0 beckons you} {fol %0;}
+#action {%0 says, 'key me'} {give all.key %0}
+#action {You utter the words, '%0'} {#var lastCast %0;}
+#action {You lost your concentration!} {c '$lastCast';}
+#action {You are already fighting} {#var fighting true;}
+
+
+#alias {rome} {9ws5wnwnwnwswswsw11ws}
+
+
+#action { %0/%1 hitp %2/%3 mana}
+{
+	#var currentHp %0;
+	#var totalHp %1;
+	#var currentMana %2;
+	#var totalMana %3;
+	#math hpThreshold {$totalHp * 0.8};
+}

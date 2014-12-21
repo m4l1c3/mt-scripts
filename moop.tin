@@ -1,0 +1,26 @@
+#var health 1;
+#alias spells {chant world;}
+#action {You join the fight} {stun;#6 quiv;}
+
+#action {Try standing first} {stand}
+#action {You assume the %0 fighting style.} {#var fightingStyle %0;}
+#action {You abandon} {styl $fightingStyle;}
+#action {%0(%1)hitp} {#if {$health == 1 && %0 < 1300} {#var health 0;#2 'cheal;quiv;}}
+#action {Your tummy rumbles and you begin to feel weak.} {say feast;}
+#action {You are disarmed} {stand;#3 callsword;}
+#alias {recallgroup} {#2 recite recall shelonna; #2 recite recall duder;#2 recite recall burn;#2 recite recall;#delay {20} {se;#all repair;wn;#all spells;'feast;wwn;buy 10 recall;see;#burn ord fol die;#burn summon;#burn adrencharms;}}
+#alias {romeboton} {#read romebot.tin}
+#action {You feel a lot better!} {#var health 1;}
+#action {has been damaged} {eq}
+
+#action {<about...> Aura of Blessing  [needs repair]} {rem aura}
+#action {<neck....> black rose necklace  [needs repair]} {rem rose}
+#action {<chest...> Snake Power (invis)  [needs repair]} {rem power}
+#action {<arms....> Yeti's Bones  [needs repair]} {rem bone}
+#action {<wrist...> a Flaming Bracelet  [needs repair]} {rem brace}
+#action {<hands...> stone fist  [needs repair]} {rem fist}
+#action {<finger..> Gauntlet ring  [needs repair]} {rem ring}
+#action {<off hand> Rune of Water  [needs repair]} {rem rune}
+#action {<waist...> burlap rope belt  [needs repair]} {rem belt}
+#action {<ankle...> A Bone Anklet  [needs repair]} {rem bone}
+#action {<ankle...> a strand of ivy  [needs repair]} {rem ivy}

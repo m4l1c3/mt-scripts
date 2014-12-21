@@ -1,0 +1,10 @@
+#var health 1
+
+#unaction {%0(%1)hitp} {#if {$health == 1 && %0 < 300} {#2 'heal;#var health 0;toggle off;#3 {lco bandage;bandage self;};#delay {45} {toggle on;look;#var health 1}}}
+#action {You are already fighting} {#var fighting 1;}
+#action {Bearclaw who} {#var fighting 0;look;}
+#action {You're fighting! It would be unwise to put yourself in such a position.} {#delay {5} {bandage self;}}
+
+#action {There was no need to bandage} {lci band;}
+#action {You join the fight} {#4 kiet;}
+#action {%0 says, 'bandage'} {lco band;bandage %0;}

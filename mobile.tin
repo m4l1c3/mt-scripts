@@ -1,0 +1,16 @@
+#action {%0 says, 'heal'} {c 'heal' %0;}
+#action {%0 says, 'pheal'} {c 'power heal' %0;}
+#action {%0 says, 'gpheal'} {c 'group power heal' %0;}
+#action {%0 says, 'cure'} {c 'cure critic' %0;}
+#action {%0 says, 'armor'} {c 'armor' %0;}
+#action {%0 says, 'protector'} {c 'proector' %0;}
+#action {%0 says, 'bless'} {c 'bless' %0;}
+#action {%0 says, 'fly'} {c 'fly' %0}
+#action {%0 says, 'spells'} {c 'arm' %0;c 'protector' %0;trues;rec scroll %0;c 'mass i';c 'bless' %0;c 'fly' %0;scribe 'p f e';rec scr' %0;}
+#action {%0 says, 'true'} {trues;rec scr %0;}
+#action {tells you: daemonsdown} {ddnw;climb down;nw;enter gate}
+#action {] %0 tells you: reloc %1} {reloc %1;}
+#action {] %0 tells you: summon} {c 'summon' %0;}
+#action {%0 says, 'recall'} {word %0;}
+
+#alias {spells} {c 'sanc';c 'arm';c 'bless';c 'true s';c 'protector';c 'golumn';c 'fly'; c 'p f e';}

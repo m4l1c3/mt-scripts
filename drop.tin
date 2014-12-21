@@ -1,0 +1,46 @@
+#action {An Entity watches over you.} 
+{
+	#if {$fighting == 0} 
+	{
+		#var fighting 1;k ent;
+	}
+}
+#action {A raging Inferno burns here.} 
+{
+	#if {$fighting == 0} 
+	{
+		#var fighting 1;k inf;
+	}
+}
+#action {A Billybumbler lurks here.} 
+{
+	
+}
+#action {A giant Arachnid towers over you.} 
+{
+	
+}
+#action {A Silent Mantis awaits its prey.} 
+{
+	
+}
+#action {A Locust hovers overhead.} 
+{
+	
+}
+#action {A large Mosquito buzzes overhead.} 
+{
+	
+}
+#action {An Unholy Zombie stands here.} 
+{
+	
+}
+#action {A Dark Guardian stand here.} 
+{
+	
+}
+#action {A Damned Barbarian is here.} 
+{
+	
+}

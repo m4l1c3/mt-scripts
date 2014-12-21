@@ -1,0 +1,277 @@
+#var fighting 0;
+#var bot 0;
+#var look 0;
+#var health 1;
+#var operating 0;
+
+#var desertPath {e;e;n;w;w;w;w;n;e;e;e;e;n;w;w;w;w;e;e;n;u;n;u;u;n;n;w;w;n;n;n;e;s;s;s;e;n;n;n;e;s;s;s;e;n;n;n;s;s;e;e;e;e;n;s;s;s;e;n;n;n;e;s;s;s;e;n;n;n;e;s;s;s;n;n;n;n;u;u;w;w;w;w;u;u;w;w;w;w;u;u;w;w;u;u;w;w;w;w;w;w;w;u;u;}
+
+#alias {clearHealthCheck}
+{
+	#undelay {healthCheck}
+}
+
+#alias {healthcheck}
+{
+	#delay {healthCheck}
+	{
+		#var health 1;
+		toggle on;
+	}
+	{30}
+}
+
+#ticker {characterStatus}
+{
+    #if {$bot == 1}
+    {
+        #if {$health == 1 && $currentHp < $hpThreshold}
+        {
+            #var health 0;
+            toggle off;
+            healthcheck;
+        }
+        {
+            #if {$health == 0 && $currentHp > $hpThreshold}
+            {
+                #var health 1;
+                clearHealthCheck;
+                toggle on;
+            }
+        }
+    }
+}
+{1}
+
+#action {Impale who?}
+{
+	#var fighting 0;
+	look;
+}
+
+#alias {walkToDesert}
+{
+	5n12ese7n;
+}
+
+#alias {toggle}
+{
+	#if {"%1" == ""}
+	{
+		#showme Bot On or Off?
+	}
+	{
+		#if {"%1" == "on"}
+		{
+            #if {$currentHp > 999}
+            {
+                #show toggling on;
+                #var bot 1;
+                #var operating 1;
+                look;
+            }
+            {
+                healthcheck;
+            }
+		}
+		#if {"%1" == "off"}
+		{
+            #show toggling off;
+			#var bot 0;
+			#var operating 0;
+		}
+	}
+}
+
+#action {Exits}
+{
+	#var look 1;
+}
+
+#alias {resetLook}
+{
+	#var look 0;
+}
+
+#ticker {moveForward}
+{
+	#if {$look == 1 && $fighting == 0 && $bot == 1 && $operating == 1}
+	{
+		walkForward;
+	}
+}
+{5}
+
+#alias {walkForward}
+{
+	#path walk foward;
+}
+
+#action {You fly}
+{
+	resetLook;
+}
+
+#action {You creep}
+{
+	resetLook;
+}
+
+#action {is DEAD}
+{
+	#var fighting 0;
+	look;
+}
+
+#action {A large scavenger bug scuttles across the sand}
+{
+	#if {$bot == 1 && $fighting == 0}
+	{
+		#var fighting 1;
+		k scav;
+	}
+}
+
+#unaction {A giant scarab beetle moves across}
+{
+	#if {$bot == 1 && $fighting == 0}
+	{
+		#var fighting 1;
+		k scar;
+	}
+}
+
+#action {a nomad warrior glows}
+{
+	#if {$bot == 1 && $fighting == 0}
+	{
+		#var fighting 1;
+		k warr;
+	}
+}
+
+#action  {an asp glows}
+{
+	#if {$bot == 1 && $fighting == 0}
+	{
+		#var fighting 1;
+		k asp;
+	}
+}
+
+#action {a wind raider glows}
+{
+	#if {$bot == 1 && $fighting == 0}
+	{
+		#var fighting 1;
+		k wind;
+	}
+}
+
+#unaction {a whirlwind glows}
+{
+	#if {$bot == 1 && $fighting == 0}
+	{
+		#var fighting 1;
+		k whirl;
+	}
+}
+
+#action {a lamia glows}
+{
+	#if {$bot == 1 && $fighting == 0}
+	{
+		#var fighting 1;
+		k lamia;
+	}
+}
+
+#action {a sandworm glows}
+{
+	#if {$bot == 1 && $fighting == 0}
+	{
+		#var fighting 1;
+		k sand;
+	}
+}
+
+#action {a giant sandworm glows}
+{
+	#if {$bot == 1 && $fighting == 0}
+	{
+		#var fighting 1;
+		k sand;
+	}
+}
+
+#unaction {a smuggler glows}
+{
+	#if {$bot == 1 && $fighting == 0}
+	{
+		#var fighting 1;
+		k smugg;
+	}
+}
+
+#unaction {a smuggler general glows}
+{
+	#if {$bot == 1 && $fighting == 0}
+	{
+		#var fighting 1;
+		k smugg;
+	}
+}
+
+#action {a water baron glows}
+{
+	#if {$bot == 1 && $fighting == 0}
+	{
+		#var fighting 1;
+		k baron;
+	}
+}
+
+#action {a giant gila monster glows}
+{
+	#if {$bot == 1 && $fighting == 0}
+	{
+		#var fighting 1;
+		k gila;
+	}
+}
+
+#action {a cliff dweller glows}
+{
+	#if {$bot == 1 && $fighting == 0}
+	{
+		#var fighting 1;
+		k cliff;
+	}
+}
+
+#action {a desert mouse glows}
+{
+	#if {$bot == 1 && $fighting == 0}
+	{
+		#var fighting 1;
+		k mouse;
+	}
+}
+
+#action {a stone dragon glows}
+{
+	#if {$bot == 1 && $fighting == 0}
+	{
+		#var fighting 1;
+		k dragon;
+	}
+}
+
+#unaction {a rogue knight glows}
+{
+	#if {$bot == 1 && $fighting == 0}
+	{
+		#var fighting 1;
+		k knight;
+	}
+}

@@ -1,0 +1,53 @@
+#var tanking 0;
+#action {The Helm of Law  [needs} {rem helm;}
+#action {Girl Power..infinite light  [needs} {rem power;}
+#action {Sapphire Stud Earring  [needs} {#2 rem ear;}
+#action {a Tough leather cloak  [needs} {rem leather;}
+#action {Hero's Cloak  [needs} {rem hero;}
+#action {a Gemstone necklace  [needs} {rem necklace;}
+#action {Arboreal Protector  [needs} {rem arbor;}
+#action {Spiderskin Plate Armor  [needs} {rem spider;}
+#action {Emerald Arm Plates  [needs} {rem emerald;}
+#action {a Chainmail mesh gauntlet  [needs} {rem gaunt;}
+#action {Swirling Fog Ring  [needs} {rem fog;}
+#action {a Black Onyx Ring  [needs} {rem onyx;}
+#action {Rune of Earth  [needs} {rem rune;}
+#action {A Battle-worn Anklet  [needs} {#2 rem ank;}
+#action {Boots of Nippon  [needs} {rem boot;}
+
+#action {You need to wield a weapon in your good hand to impale} {c 'liv'}
+
+#action {You have no wounds to heal}
+{
+	#var health 1;
+}
+
+#ticker {healSelf}
+{
+	#if {($health == 0 && $operating == 1) || ($fighting == 0 && $currentHp < $hpThreshold)}
+	{
+		treat self;
+	}
+}
+{15}
+
+#action {You pierce}
+{
+    #if {$bot == 1 && $tanking == 0}
+    {
+        impale;
+    }
+}
+
+@action {You kick dirt}
+{
+	#if {$tanking == 1}
+	{
+		kick;
+	}
+}
+
+#action {You are disarmed}
+{
+	c 'living staff';
+}

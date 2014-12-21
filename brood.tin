@@ -1,0 +1,14 @@
+#var charmDeaths 0;
+#alias {spells} {c 'leatherskin';c 'levitate';c 'plague';c 'spec a';c 'crim w';}
+#alias {summon} {#6 c 'hell g';evaluateCharmDeaths}
+
+#action {Your crimson wall of fire subsides.} {c 'crim w';}
+#action {Your spectral armor fades away.} {c 'spec a';}
+#action {%0 says, 'resist'} {c 'res p' %0;}
+#action {Hellspawn hates your guts!} {#if {$force == 1} {c 'hell g';}}
+
+#alias {restartBattle} {n;ord fol k queen;s;#20 flee;}
+#alias {resetCharmDeaths} {#var charmDeaths 0;}
+#alias {evaluateCharmDeaths} {#if {$charmDeaths < 5} {#math charmDeaths {$charmDeaths + 1}} {restartBattle}}
+
+#action {ZEUS sends} {#boo #math heals {$heals + 3};}

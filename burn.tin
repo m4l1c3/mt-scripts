@@ -1,0 +1,13 @@
+#var cureCasts 0;
+#action {Your tummy rumbles} {feast;c 'endurance';}
+#action {peel to the ground} {c 'dragonskin';}
+#action {%0 says, 'cheal'} {ord fol c 'c c' %0;evaluateCharmMana;}
+#action {%0 says, 'feast'} {c 'feast' %0;c 'endurance' %0;}
+#action {You join the fight} {#2 c 'fires';}
+#action {%0 says, 'bark'} {c 'bark skin' %0;}
+#alias {adrencharms} {c 'adren' prot;c 'adren' 2.prot;c 'adren' 3.prot;c 'adren' 4.prot;}
+#alias {evaluateCharmMana} {#if {$cureCasts < 42} {#math cureCasts {$cureCasts + 1}} {respawnCharms}}
+#alias {respawnCharms} {ord fol die;resetCharmCasts;summon;adrencharms;}
+#alias {resetCharmCasts} {#var cureCasts 0;}
+#alias {spells} {c 'dragonskin';c 'force of nature';c 'wrath of nature';c 'res wa';c 'res wi';c 'res li';c 'fly';c 'float';c 'bark skin';c 'feast';c 'adren';c 'endurance';c 'fleet fee';c 'true s';}
+#alias {summon} {#5 c 'familiar'}
