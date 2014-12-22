@@ -3,8 +3,13 @@
 #var look 0;
 #var health 1;
 #var operating 0;
+#var direction 0;
 
 #var desertPath {e;e;n;w;w;w;w;n;e;e;e;e;n;w;w;w;w;e;e;n;u;n;u;u;n;n;w;w;n;n;n;e;s;s;s;e;n;n;n;e;s;s;s;e;n;n;n;s;s;e;e;e;e;n;s;s;s;e;n;n;n;e;s;s;s;e;n;n;n;e;s;s;s;n;n;n;n;u;u;w;w;w;w;u;u;w;w;w;w;u;u;w;w;u;u;w;w;w;w;w;w;w;u;u;}
+
+#var reverseDesertPath
+{d;d;e;e;e;e;e;e;e;d;d;e;e;d;d;e;e;e;e;d;d;e;e;e;e;d;d;s;s;s;s;n;n;n;w;s;s;s;w;n;n;n;w;s;s;s;w;n;n;n;s;w;w;w;w;
+n;n;s;s;s;w;n;n;n;w;s;s;s;w;n;n;n;w;s;s;s;e;e;s;s;d;d;s;d;s;w;w;e;e;e;e;s;w;w;w;w;s;e;e;e;e;s;w;w;}
 
 #alias {clearHealthCheck}
 {
@@ -258,7 +263,7 @@
 	}
 }
 
-#action {a stone dragon glows}
+#unaction {a stone dragon glows}
 {
 	#if {$bot == 1 && $fighting == 0}
 	{
@@ -273,5 +278,27 @@
 	{
 		#var fighting 1;
 		k knight;
+	}
+}
+
+#action {END OF PATH}
+{
+	
+	
+	#if {$direction == 0 && $bot == 1}
+	{
+		toggle off;
+		#var direction 1;
+		#path load reverseDesertPath;
+		toggle on;
+	}
+	{
+		#if {$direction == 1 && $bot == 1}
+		{
+			toggle off;
+			#var direction 0;
+			#path load desertPath;
+			toggle on
+		}
 	}
 }
