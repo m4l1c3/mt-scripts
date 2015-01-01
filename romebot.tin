@@ -2,6 +2,7 @@
 #var mobcount 0
 #var walked 1
 #var bottoggle "on"
+#var bot 1;
 #var fighting false
 #map read rome
 #map goto 1
@@ -53,6 +54,12 @@
 	look;
 }
 
+#action {Kick who}
+{
+	#var fighting false;
+	look;
+}
+
 #tick {mobcheck}
 {
 	#if {"$fighting" == "false"}
@@ -63,32 +70,30 @@
 		}
 		#var oldmobcount $mobcount;
 	}
-	{
-		#if {"$mobcount" == "0"} {#var fighting false;}
-	}
 }
 {5}
 #tick {timer}
 {
-
 	#if {$bottoggle == "on"}
 	{
 		#if {$walked <= 157}
 		{
-		#if {"$fighting" == "false"}
-		{
-		#if {"$mobcount" == "0"}
-		{
-			#math {walked} {$walked + 1};
-			#map run {$walked};
-		}
-		}
+			#if {"$fighting" == "false"}
+			{
+				#if {"$mobcount" == "0" && $currentHp > $hpThreshold}
+				{
+					#math {walked} {$walked + 1};
+					#map run {$walked};
+				}
+			}
 		}
 		{
 		#showme Bot completed, returning home captain.;
 		#var bottoggle "off";
+		#var bot 0;
 		#map destroy;
-		recallgroup;
+		say grecall;
+		#delay 5 {se;#all repair;wn;}
 		#delay 25 rome;
 		#delay 40 romeboton;
 		}
@@ -97,14 +102,20 @@
 {3}
 #act {[DAM:%0}
 {
-#var fighting true
+	#var fighting true
 }
 #act {death cry!}
 {
-	#var fighting false;
+	decrementMobCount;
+}
+
+#alias {decrementMobCount}
+{
 	#math {mobcount} {$mobcount - 1};
+	#var fighting false;
 	look;
 }
+
 #alias {toggle}
 {
 	#if {"%1" == ""}
@@ -115,6 +126,7 @@
 	#if {"%1" == "on"}
 	{
 	#var bottoggle "on";
+	#var bot 1;
 	#var mobcount 0;
 	#read rome.tin;
 	look;
@@ -123,6 +135,7 @@
 	{
 	#read unrome.tin;
 	#var bottoggle "off";
+	#var bot 0;
 	}
 	}
 }
