@@ -1,19 +1,18 @@
 #var tanking 0;
-#action {The Helm of Law  [needs} {rem helm;}
-#action {Girl Power..infinite light  [needs} {rem power;}
-#action {Sapphire Stud Earring  [needs} {#2 rem ear;}
-#action {a Tough leather cloak  [needs} {rem leather;}
-#action {Hero's Cloak  [needs} {rem hero;}
-#action {a Gemstone necklace  [needs} {rem necklace;}
-#action {Arboreal Protector  [needs} {rem arbor;}
-#action {Spiderskin Plate Armor  [needs} {rem spider;}
-#action {Emerald Arm Plates  [needs} {rem emerald;}
-#action {a Chainmail mesh gauntlet  [needs} {rem gaunt;}
-#action {Swirling Fog Ring  [needs} {rem fog;}
-#action {a Black Onyx Ring  [needs} {rem onyx;}
-#action {Rune of Earth  [needs} {rem rune;}
-#action {A Battle-worn Anklet  [needs} {#2 rem ank;}
-#action {Boots of Nippon  [needs} {rem boot;}
+
+#action {Orc Lord's Helm  [needs]} {rem orc;eq;}
+#action {Girl Power..infinite light  [needs]} {rem girl;eq;}
+#action {Sapphire Stud Earring  [needs]} {rem stud;eq;}
+#action {a Tough leather cloak  [needs]} {rem leather;eq;}
+#action {Arboreal Protector  [needs]} {rem arb;eq;}
+#action {Spiderskin Plate Armor  [needs]} {rem spider;eq;}
+#action {Emerald Arm Plates  [needs]} {rem emerald;eq;}
+#action {Gauntlets of Power  [needs]} {rem gaunt;eq;}
+#action {ring of the Vampire  [needs]} {rem ring;eq;}
+#action {shield of nature's blades  [needs]} {rem shield;lco wooden;wear wooden;eq;}
+#action {a pair of Obsidian Legplates  [needs]} {rem leg;eq;}
+#action {A Battle-worn Anklet  [needs]} {rem ank;eq;}
+#action {Boots of Nippon  [needs]} {rem boot;eq;}
 
 #action {You need to wield a weapon in your good hand to impale} {c 'liv'}
 
@@ -39,7 +38,7 @@
     }
 }
 
-@action {You kick dirt}
+#action {You kick dirt}
 {
 	#if {$tanking == 1}
 	{
