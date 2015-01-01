@@ -27,6 +27,12 @@
 	{
 		treat self;
 	}
+	{
+		#if {("$fighting" == "false" && $currentHp < $hpThreshold) || ("$fighting" == "true" && $currentHp < $hpThreshold)}
+		{
+			'heal;
+		}
+	}
 }
 {15}
 
