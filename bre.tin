@@ -1,18 +1,29 @@
 #var tanking 0;
+#var staffBlock 0;
+#var sheildStrike 0;
 
-#action {Orc Lord's Helm  [needs]} {rem orc;eq;}
-#action {Girl Power..infinite light  [needs]} {rem girl;eq;}
-#action {Sapphire Stud Earring  [needs]} {rem stud;eq;}
-#action {a Tough leather cloak  [needs]} {rem leather;eq;}
-#action {Arboreal Protector  [needs]} {rem arb;eq;}
-#action {Spiderskin Plate Armor  [needs]} {rem spider;eq;}
-#action {Emerald Arm Plates  [needs]} {rem emerald;eq;}
-#action {Gauntlets of Power  [needs]} {rem gaunt;eq;}
-#action {ring of the Vampire  [needs]} {rem ring;eq;}
-#action {shield of nature's blades  [needs]} {rem shield;lco wooden;wear wooden;eq;}
-#action {a pair of Obsidian Legplates  [needs]} {rem leg;eq;}
-#action {A Battle-worn Anklet  [needs]} {rem ank;eq;}
-#action {Boots of Nippon  [needs]} {rem boot;eq;}
+#action {Orc Lord's Helm  [needs} {rem orc;eq;}
+#action {Girl Power..infinite light  [needs} {rem girl;eq;}
+#action {Sapphire Stud Earring  [needs} {rem stud;eq;}
+#action {a Tough leather cloak  [needs} {rem leather;eq;}
+#action {Arboreal Protector  [needs} {rem arb;eq;}
+#action {Spiderskin Plate Armor  [needs} {rem spider;eq;}
+#action {Emerald Arm Plates  [needs} {rem emerald;eq;}
+#action {Gauntlets of Power  [needs} {rem gaunt;eq;}
+#action {ring of the Vampire  [needs} {rem ring;eq;}
+#action {shield of nature's blades  [needs} {rem shield;lco wooden;wear wooden;eq;}
+#action {a pair of Obsidian Legplates  [needs} {rem leg;eq;}
+#action {A Battle-worn Anklet  [needs} {rem ank;eq;}
+#action {Boots of Nippon  [needs} {rem boot;eq;}
+#action {The Helm of Law  [needs} {rem helm;eq;}
+#action {Girl Power..infinite light  [needs} {rem girl;eq;}
+#action {Spiderskin Plate Armor  [needs} {rem spider;eq;}
+#action {Gauntlets of Power  [needs} {rem gaunt;eq;}
+#action {a Pair of chainmail mesh greaves  [needs} {rem grea;eq;}
+#action {Swirling Fog Ring  [needs} {rem fog;eq;}
+#action {a Black Onyx Ring  [needs} {rem onyx;eq;}
+#action {A Battle-worn Anklet  [needs} {rem ank;eq;}
+#action {Blade Boots  [needs} {rem boot;eq;}
 
 #action {You need to wield a weapon in your good hand to impale} {c 'liv'}
 
@@ -21,10 +32,16 @@
 	#var health 1;
 }
 
+#action {You wish that your wounds would stop BLEEDING so much!}
+{
+	#3 'pheal;
+}
+
 #ticker {healSelf}
 {
-	#if {($health == 0 && $operating == 1) || ($fighting == 0 && $currentHp < $hpThreshold)}
+	#if {($health == 0 && $operating == 1) || ($fighting == 0 && $currentHp < $hpThreshold) || ("$fighting" == "false" && $currentHp < $hpThreshold)}
 	{
+		'heal;
 		treat self;
 	}
 	{
@@ -55,4 +72,36 @@
 #action {You are disarmed}
 {
 	c 'living staff';
+}
+
+#action {You begin to masterfully use your}
+{
+	#var staffBlock 1;
+}
+
+#action {You begin to swing}
+{
+	#var shieldStrike 1;
+}
+
+#action {sets SHIELD_STRIKE}
+{
+	#var sheildStrike 1;
+}
+
+#action {sets STAFFBLOCK}
+{
+	#var staffBlock 1;
+}
+
+#action {<*>}
+{
+	#if {$staffBlock == 0}
+	{
+		staffblock;
+	}
+	#if {$shieldStrike == 0}
+	{
+		shieldstrike
+	}
 }

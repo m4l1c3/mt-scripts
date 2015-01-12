@@ -11,43 +11,6 @@
 #format dir %s
 #format starttime %T
 
-#alias {clearHealthCheck}
-{
-	#undelay {healthCheck}
-}
-
-#alias {healthcheck}
-{
-	#delay {healthCheck}
-	{
-		#var health 1;
-		toggle on;
-	}
-	{30}
-}
-
-#ticker {characterStatus}
-{
-    #if {$bot == 1}
-    {
-        #if {$health == 1 && $currentHp < $hpThreshold}
-        {
-            #var health 0;
-            toggle off;
-            healthcheck;
-        }
-        {
-            #if {$health == 0 && $currentHp > $hpThreshold}
-            {
-                #var health 1;
-                clearHealthCheck;
-                toggle on;
-            }
-        }
-    }
-}
-{1}
-
 #action {Impale who?}
 {
 	#var fighting false;
@@ -76,7 +39,7 @@
 {
 	#if {$bottoggle == "on"}
 	{
-		#if {$walked <= 157}
+		#if {$walked < 157}
 		{
 			#if {"$fighting" == "false"}
 			{
@@ -95,7 +58,7 @@
 		say grecall;
 		#delay 5 {se;#all repair;wn;}
 		#delay 25 rome;
-		#delay 40 romeboton;
+		#delay 40 #read romebot.tin;
 		}
 	}
 }

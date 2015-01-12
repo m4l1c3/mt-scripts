@@ -9,43 +9,6 @@
 
 #var reverseDesertPath {d;d;e;e;e;e;e;e;e;d;d;e;e;d;d;e;e;e;e;d;d;e;e;e;e;d;d;s;s;s;s;n;n;n;w;s;s;s;w;n;n;n;w;s;s;s;w;n;n;n;s;w;w;w;w;n;n;s;s;s;w;n;n;n;w;s;s;s;w;n;n;n;w;s;s;s;e;e;s;s;d;d;s;d;s;w;w;e;e;e;e;s;w;w;w;w;s;e;e;e;e;s;w;w;}
 
-#alias {clearHealthCheck}
-{
-	#undelay {healthCheck}
-}
-
-#alias {healthcheck}
-{
-	#delay {healthCheck}
-	{
-		#var health 1;
-		toggle on;
-	}
-	{30}
-}
-
-#ticker {characterStatus}
-{
-    #if {$bot == 1}
-    {
-        #if {$health == 1 && $currentHp < $hpThreshold}
-        {
-            #var health 0;
-            toggle off;
-            healthcheck;
-        }
-        {
-            #if {$health == 0 && $currentHp > $hpThreshold}
-            {
-                #var health 1;
-                clearHealthCheck;
-                toggle on;
-            }
-        }
-    }
-}
-{1}
-
 #action {Impale who?}
 {
 	#var fighting 0;
@@ -55,75 +18,6 @@
 #alias {walkToDesert}
 {
 	5n12ese7n;
-}
-
-#alias {toggle}
-{
-	#if {"%1" == ""}
-	{
-		#showme Bot On or Off?
-	}
-	{
-		#if {"%1" == "on"}
-		{
-            #if {$currentHp > 999}
-            {
-                #show toggling on;
-                #var bot 1;
-                #var operating 1;
-                look;
-            }
-            {
-                healthcheck;
-            }
-		}
-		#if {"%1" == "off"}
-		{
-            #show toggling off;
-			#var bot 0;
-			#var operating 0;
-		}
-	}
-}
-
-#action {Exits}
-{
-	#var look 1;
-}
-
-#alias {resetLook}
-{
-	#var look 0;
-}
-
-#ticker {moveForward}
-{
-	#if {$look == 1 && $fighting == 0 && $bot == 1 && $operating == 1 && $currentHp > $hpThreshold}
-	{
-		walkForward;
-	}
-}
-{5}
-
-#alias {walkForward}
-{
-	#path walk foward;
-}
-
-#action {You fly}
-{
-	resetLook;
-}
-
-#action {You creep}
-{
-	resetLook;
-}
-
-#action {is DEAD}
-{
-	#var fighting 0;
-	look;
 }
 
 #action {A large scavenger bug scuttles across the sand}

@@ -22,3 +22,8 @@
 	#var totalMana %3;
 	#math hpThreshold {$totalHp * 0.8};
 }
+
+#action {has been damaged}
+{
+	eq;
+}
